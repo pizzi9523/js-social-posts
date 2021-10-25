@@ -35,12 +35,27 @@ body{
     height: 300px;
 }
 
-#like_button{
+.like_button{
     border: none;
     background-color: white;
     color: var(--grey-color);
     font-weight: bold;
 } 
+
+a{
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+a:hover{
+    background-color: rgba(184, 184, 184, 0.815);
+    cursor: pointer;
+}
+
+.like_button.liked{
+    color: lime;
+}
 
 .n_likes{
     font-weight: bold;

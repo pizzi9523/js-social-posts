@@ -47,6 +47,28 @@ const posts = [
 
 createPost(posts);
 const image_wrapper_element = document.getElementsByClassName("image_wrapper")
+const buttons_like_element = document.getElementsByClassName("like_button")
+
+for (let i = 0; i < buttons_like_element.length; i++) {
+    const button_like = buttons_like_element[i]
+    button_like.addEventListener("click", pressLike)
+
+}
+
+function pressLike() {
+    const postId = this.getAttribute("data-post-id");
+    const counterLikeEl = document.getElementById("like-counter-" + postId);
+
+    if (this.classList.contains("liked")) {
+        this.classList.remove("liked")
+        counterLikeEl.innerHTML = parseInt(counterLikeEl.innerHTML) - 1
+
+    } else {
+        this.classList.add("liked");
+        counterLikeEl.innerHTML = parseInt(counterLikeEl.innerHTML) + 1
+    }
+
+}
 
 for (let i = 0; i < posts.length; i++) {
     const post = posts[i];
@@ -54,8 +76,6 @@ for (let i = 0; i < posts.length; i++) {
         image_wrapper_element.item(i).innerHTML = "";
         image_wrapper_element.item(i).insertAdjacentHTML("beforeend", post.autore.nome[0]);
         image_wrapper_element.item(i).insertAdjacentHTML("beforeend", post.autore.nome[iniziali(post.autore.nome)]);
-
-
         image_wrapper_element.item(i).style.width = "50px"
         image_wrapper_element.item(i).style.height = "50px"
         image_wrapper_element.item(i).style.lineHeight = "50px"
@@ -99,10 +119,10 @@ function createPost(posts) {
                         </div>
                         <div class="row like p-3">
                             <div class="col-6 text-center">
-                                <button id="like_button"> <i class="fas fa-thumbs-up"></i> Mi Piace</button>
+                                <a class="like_button" data-post-id="${post["id"]}"> <i class="fas fa-thumbs-up"></i> Mi Piace</a>
                             </div>
                             <div class="col-6 text-center">
-                                <div>Piace a <span class="n_likes">${post["n_likes"]}</span> persone</div>
+                                <div>Piace a <span id="like-counter-${post["id"]}" class="n_likes">${post["n_likes"]}</span> persone</div>
                             </div>
                         </div>
                     </div>
