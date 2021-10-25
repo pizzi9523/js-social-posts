@@ -36,7 +36,20 @@ const posts = [
         n_likes: 45,
         data_creazione: new Date("2021, 08")
 
-    }
+    },
+
+    {
+        id: 3,
+        contenuto: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem dolorem autem recusandae mollitia tempore vel ut delectus omnis, sit minima eos illo repellendus, officiis quidem",
+        immagine: "https://picsum.photos/id/236/200/300",
+        autore: {
+            nome: "Tiziano Nicolai",
+            avatar: ""
+        },
+        n_likes: 21,
+        data_creazione: new Date("2021, 9")
+
+    },
 
 ]
 
