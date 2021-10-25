@@ -38,7 +38,8 @@ body{
 #like_button{
     border: none;
     background-color: white;
-    color: var(--grey-color)
+    color: var(--grey-color);
+    font-weight: bold;
 } 
 
 .n_likes{
