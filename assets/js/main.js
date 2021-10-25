@@ -8,7 +8,7 @@ const posts = [
             avatar: "https://picsum.photos/id/2/200/300"
         },
         n_likes: 80,
-        data_creazione: "4 mesi fa"
+        data_creazione: new Date("2020, 11")
 
     },
 
@@ -21,12 +21,12 @@ const posts = [
             avatar: "https://picsum.photos/id/36/200/300"
         },
         n_likes: 112,
-        data_creazione: "2 mesi fa"
+        data_creazione: new Date("2021, 06")
 
     },
 
     {
-        id: 1,
+        id: 2,
         contenuto: "lLorem ipsum dolor sit amet consectetur adipisicing elit. Id aperiam esse odio officia ut quam aspernatur, velit atque, inventore sapiente optio possimus. Delectus at suscipit obcaecati sint libero cum quisquam fugit distinctio atque mollitia minima ratione, ipsam exercitationem sit magnam nemo. Perferendis porro earum tenetur, officiis praesentium itaque in. Facere?",
         immagine: "https://picsum.photos/id/145/200/300",
         autore: {
@@ -34,16 +34,28 @@ const posts = [
             avatar: "https://picsum.photos/id/5/200/300"
         },
         n_likes: 45,
-        data_creazione: "10 mesi fa"
+        data_creazione: new Date("2021, 08")
 
     }
 
 ]
 
+
 // console.log(posts);
 // console.log(posts[1]["autore"]["nome"]);
-createPost(posts)
 
+
+createPost(posts);
+
+
+
+
+
+function monthDiff(dateFrom) {
+    const current_data = new Date;
+    return current_data.getMonth() - dateFrom.getMonth() +
+        (12 * (current_data.getFullYear() - dateFrom.getFullYear()))
+}
 
 function createPost(posts) {
 
@@ -58,7 +70,7 @@ function createPost(posts) {
                             </div>
                             <div class="details mx-4">
                                 <div class="name">${post["autore"]["nome"]}</div>
-                                <div class="date_post">${post["data_creazione"]}</div>
+                                <div class="date_post">${monthDiff(posts[i].data_creazione)} mesi fa</div>
                             </div>
 
                         </div>
