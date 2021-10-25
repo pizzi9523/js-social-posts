@@ -18,7 +18,7 @@ const posts = [
         immagine: "https://picsum.photos/id/162/200/300",
         autore: {
             nome: "Sofia Perlari",
-            avatar: "https://picsum.photos/id/36/200/300"
+            avatar: ""
         },
         n_likes: 112,
         data_creazione: new Date("2021, 06")
@@ -31,7 +31,7 @@ const posts = [
         immagine: "https://picsum.photos/id/145/200/300",
         autore: {
             nome: "Giuseppe Pizzitola",
-            avatar: "https://picsum.photos/id/5/200/300"
+            avatar: "https://picsum.photos/id/36/200/300"
         },
         n_likes: 45,
         data_creazione: new Date("2021, 08")
@@ -46,8 +46,25 @@ const posts = [
 
 
 createPost(posts);
+const image_wrapper_element = document.getElementsByClassName("image_wrapper")
+
+for (let i = 0; i < posts.length; i++) {
+    const post = posts[i];
+    if (post["autore"]["avatar"] == "") {
+        image_wrapper_element.item(i).innerHTML = "";
+        image_wrapper_element.item(i).insertAdjacentHTML("beforeend", post.autore.nome[0]);
+        image_wrapper_element.item(i).insertAdjacentHTML("beforeend", post.autore.nome[iniziali(post.autore.nome)]);
 
 
+        image_wrapper_element.item(i).style.width = "50px"
+        image_wrapper_element.item(i).style.height = "50px"
+        image_wrapper_element.item(i).style.lineHeight = "50px"
+        image_wrapper_element.item(i).style.textAlign = "center"
+        image_wrapper_element.item(i).style.backgroundColor = "skyblue"
+        image_wrapper_element.item(i).style.borderRadius = "50%"
+    }
+
+}
 
 
 
@@ -95,3 +112,12 @@ function createPost(posts) {
     }
 
 }
+
+function iniziali(stringa) {
+    for (let i = 0; i < stringa.length; i++) {
+        const element = stringa[i];
+        if (element == " ")
+            return i + 1;
+    }
+}
+
